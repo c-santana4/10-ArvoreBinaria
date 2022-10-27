@@ -90,13 +90,10 @@ void inserir()
 	else {
 		 insereArvore(raiz, valor);
 	}
-
-
 }
 
 void exibirQuantidade() {
 	cout << "Quantidade de elementos: " << elementosArvore(raiz) << endl;
-	cout << raiz->dir->valor;
 	
 }
 
@@ -128,9 +125,9 @@ NO* insereArvore(NO* no, int valor)
 	}
 
 	if (no->valor > valor) {
-		return insereArvore(no->dir, valor);
-	} else {
 		return insereArvore(no->esq, valor);
+	} else {
+		return insereArvore(no->dir, valor);
 	}
 }
 
@@ -145,5 +142,11 @@ int elementosArvore(NO* no)
 
 void exibirElementosArvore(NO* no)
 {
-	
+	if (no == NULL) {
+		return;
+	}
+
+	cout << no->valor << endl;
+	exibirElementosArvore(no->esq);
+	exibirElementosArvore(no->dir);
 }
